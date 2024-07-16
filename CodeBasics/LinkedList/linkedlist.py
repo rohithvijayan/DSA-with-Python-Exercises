@@ -66,7 +66,67 @@ class LL:
                 temp=temp.next
                 count+=1
             return
-            
+    def remove_end(self):
+        if self.head is None:
+            print("\nEmpty LinkedList")
+        elif self.head.next is None:
+            self.head=None
+        else:
+            temp=self.head
+            while temp.next.next is not None:
+                temp=temp.next
+            temp.next=None
+    def insert_after(self,value,after_value):
+        if self.head is None:
+            print("\nEMpty LInkedLIst")
+            return
+        elif self.head.next is None:
+            if self.head.value!=after_value:
+                print("\nValue not found in LinkedList")
+                return
+            else:
+                self.insert_end(value)
+        else:
+            temp=self.head
+            while temp:
+                if temp.value==after_value:
+                    new_node=Node(value,temp.next)
+                    temp.next=new_node
+                temp=temp.next
+    
+                    
+    def set_value(self,value,index):
+        if index<0 or index>=self.length_ll():
+            print("\nIndex Invalid")    
+            return
+        elif index==0:
+            self.head.value=value
+        else:
+            count=0
+            temp=self.head
+            while temp:
+                if count==index:
+                    temp.value=value
+                    print("\n value updated to:",value)
+                    return
+                temp=temp.next
+                count+=1   
+    def get_node(self,index):
+        if index<0 or index>=self.length_ll():
+            print("\nIndex Invalid")    
+            return
+        elif index==0:
+            print(f"value of node at index:{index} is {self.head.value}")
+            return
+        else:
+            count=0
+            temp=self.head
+            while temp:
+                if count==index:
+                    print(f"value of node at index:{index} is {temp.value}")
+                    return
+                temp=temp.next
+                count+=1
                    
     def length_ll(self):
         length=0
@@ -98,4 +158,13 @@ print("\nafter removing element at index 1:")
 ll.printll()
 ll.insert_at(3,1)
 print("\nafter inserting 3 at index 1:")
+ll.printll()
+ll.get_node(2)
+ll.set_value(7,2)
+ll.printll()
+ll.remove_end()
+ll.printll()
+ll.insert_after(4,3)
+ll.printll()
+ll.insert_after(2,1)
 ll.printll()
