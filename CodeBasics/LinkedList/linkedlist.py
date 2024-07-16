@@ -94,7 +94,31 @@ class LL:
                     temp.next=new_node
                 temp=temp.next
     
+    def remove_value(self,value):
+        if self.head is None:
+            print("\nEmpty LinkedLIst")
+        elif self.head.next is None:
+            if self.head.value==value:
+                self.head=None
+            else:
+                print("\ninvalid value")
+        else:
+            temp=self.head
+            prev=temp                
+            while temp:
+                if temp.value==value:
+                    if temp is self.head:
+                        self.head=temp.next
+                        break
+                    else:
+                        prev.next=prev.next.next
+                        print("\nValue removed:",value)
+                        break
+                prev=temp
+                temp=temp.next
                     
+                
+                              
     def set_value(self,value,index):
         if index<0 or index>=self.length_ll():
             print("\nIndex Invalid")    
@@ -166,5 +190,11 @@ ll.remove_end()
 ll.printll()
 ll.insert_after(4,3)
 ll.printll()
-ll.insert_after(2,1)
+ll.insert_after(5,4)
+ll.printll()
+print("\n after removing 1")
+ll.remove_value(1)
+ll.printll()
+print("\n after removing 5")
+ll.remove_value(5)
 ll.printll()
