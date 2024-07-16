@@ -1,3 +1,4 @@
+import math
 class Node:
      def __init__(self,value,next):
          self.value=value
@@ -15,6 +16,19 @@ class LL:
                 print(temp.value,"--->",end="")
                 temp=temp.next
             print()
+    def get_middle(self):
+        length=self.length_ll()
+        if length%2==0:
+            mid=length//2+1
+        else:
+            mid=math.ceil(length/2)
+        temp=self.head
+        count=0
+        while temp:
+            count+=1
+            if count==mid:
+                return temp.value
+            temp=temp.next
     def insert_start(self,value):
         node=Node(value,self.head)
         self.head=node
@@ -190,8 +204,16 @@ ll.remove_end()
 ll.printll()
 ll.insert_after(4,3)
 ll.printll()
+mid=ll.get_middle()
+print("middle node is:",mid)
 ll.insert_after(5,4)
 ll.printll()
+mid=ll.get_middle()
+print("middle node is:",mid)
+ll.insert_after(6,5)
+ll.printll()
+mid=ll.get_middle()
+print("middle node is:",mid)
 print("\n after removing 1")
 ll.remove_value(1)
 ll.printll()
