@@ -13,10 +13,23 @@ class Stack:
         return len(self.stack)==0
     def size(self):
         return len(self.stack)
+    def display(self):
+        return self.stack
+    def rev(self):
+        return self.stack.reverse()
+    def reverse_string(self,word):    
+        self.word=word
+        word_list=word.split(sep=" ")
+        for item in word_list:
+            stack1.push(item)
+
+        print("\nStack :",stack1.display())
+
+        stack1.rev()
+        revstack=(stack1.display())
+        for i in revstack:
+            print(i[::-1],end=" ")
+        
 stack1=Stack()
-stack1.push(1)
-stack1.push(2)
-stack1.push(3)
-stack1.peek()
-print(stack1.is_empty())
-print(stack1.size())
+word=input("\nenter a sentence or word:")
+stack1.reverse_string(word)
